@@ -1,0 +1,216 @@
+labuser@labuser-virtual-machine:~$ git --version
+git version 2.34.1
+labuser@labuser-virtual-machine:~$ mkdir tesst1
+labuser@labuser-virtual-machine:~$ cd tesst1
+labuser@labuser-virtual-machine:~/tesst1$ git init
+Initialized empty Git repository in /home/labuser/tesst1/.git/
+labuser@labuser-virtual-machine:~/tesst1$ git init
+Reinitialized existing Git repository in /home/labuser/tesst1/.git/
+labuser@labuser-virtual-machine:~/tesst1$ echo "tesst1" > tesst1
+labuser@labuser-virtual-machine:~/tesst1$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	tesst1
+
+nothing added to commit but untracked files present (use "git add" to track)
+labuser@labuser-virtual-machine:~/tesst1$ git add .
+labuser@labuser-virtual-machine:~/tesst1$ git commit -m "changes1"
+[master (root-commit) afd26c7] changes1
+ 1 file changed, 1 insertion(+)
+ create mode 100644 tesst1
+labuser@labuser-virtual-machine:~/tesst1$ git remote add origin https://github.com/Hemashreeravi/tests1.git
+labuser@labuser-virtual-machine:~/tesst1$ git remote -v
+origin	https://github.com/Hemashreeravi/tests1.git (fetch)
+origin	https://github.com/Hemashreeravi/tests1.git (push)
+labuser@labuser-virtual-machine:~/tesst1$ git push -u origin master
+Username for 'https://github.com': Hemashreeravi
+Password for 'https://Hemashreeravi@github.com': 
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 222 bytes | 222.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Hemashreeravi/tests1.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+labuser@labuser-virtual-machine:~/tesst1$ ls
+tesst1
+labuser@labuser-virtual-machine:~/tesst1$ nano tesst1
+labuser@labuser-virtual-machine:~/tesst1$ git add .
+labuser@labuser-virtual-machine:~/tesst1$ git commit -m "changes2"
+[master 12cee95] changes2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+labuser@labuser-virtual-machine:~/tesst1$ git push -u origin master
+Username for 'https://github.com': Hemashreeravi
+Password for 'https://Hemashreeravi@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 255 bytes | 255.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Hemashreeravi/tests1.git
+   afd26c7..12cee95  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+labuser@labuser-virtual-machine:~/tesst1$ git branch
+* master
+labuser@labuser-virtual-machine:~/tesst1$ git branch devopss1
+labuser@labuser-virtual-machine:~/tesst1$ git checkout devopss1
+Switched to branch 'devopss1'
+labuser@labuser-virtual-machine:~/tesst1$ git branch
+* devopss1
+  master
+labuser@labuser-virtual-machine:~/tesst1$ echo "tesst3" > file1
+labuser@labuser-virtual-machine:~/tesst1$ echo "tesst4" > file2
+labuser@labuser-virtual-machine:~/tesst1$ ls -li
+total 12
+6036141 -rw-rw-r-- 1 labuser labuser 7 Dec 14 05:13 file1
+6032181 -rw-rw-r-- 1 labuser labuser 7 Dec 14 05:13 file2
+6036165 -rw-rw-r-- 1 labuser labuser 7 Dec 14 05:06 tesst1
+labuser@labuser-virtual-machine:~/tesst1$ git add .
+labuser@labuser-virtual-machine:~/tesst1$ git commit -m "changes4"
+[devopss1 f3d26b8] changes4
+ 2 files changed, 2 insertions(+)
+ create mode 100644 file1
+ create mode 100644 file2
+labuser@labuser-virtual-machine:~/tesst1$ git push -u origin devopss1
+Username for 'https://github.com': Hemashreeravi
+Password for 'https://Hemashreeravi@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 324 bytes | 324.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'devopss1' on GitHub by visiting:
+remote:      https://github.com/Hemashreeravi/tests1/pull/new/devopss1
+remote: 
+To https://github.com/Hemashreeravi/tests1.git
+ * [new branch]      devopss1 -> devopss1
+Branch 'devopss1' set up to track remote branch 'devopss1' from 'origin'.
+labuser@labuser-virtual-machine:~/tesst1$ git branch
+* devopss1
+  master
+labuser@labuser-virtual-machine:~/tesst1$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+labuser@labuser-virtual-machine:~/tesst1$ git merge devopss1
+Updating 12cee95..f3d26b8
+Fast-forward
+ file1 | 1 +
+ file2 | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 file1
+ create mode 100644 file2
+labuser@labuser-virtual-machine:~/tesst1$ git log -p
+commit f3d26b8d27aeb24c96a6f9679d937d9324c0258b (HEAD -> master, origin/devopss1, devopss1)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sat Dec 14 05:14:45 2024 -0500
+
+    changes4
+
+diff --git a/file1 b/file1
+new file mode 100644
+index 0000000..2a7ad58
+--- /dev/null
++++ b/file1
+@@ -0,0 +1 @@
++tesst3
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..e1c0575
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++tesst4
+
+commit 12cee9575e7c78720f713d6fad6a5d5809263047 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sat Dec 14 05:08:04 2024 -0500
+
+    changes2
+
+diff --git a/tesst1 b/tesst1
+index 2edbb72..ee3cfc6 100644
+--- a/tesst1
++++ b/tesst1
+@@ -1 +1 @@
+-tesst1
++tesst2
+
+commit afd26c7d35861c2eeed77a84f2b25cb06a7cc6c8
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sat Dec 14 04:53:36 2024 -0500
+
+    changes1
+
+diff --git a/tesst1 b/tesst1
+new file mode 100644
+index 0000000..2edbb72
+--- /dev/null
++++ b/tesst1
+@@ -0,0 +1 @@
++tesst1
+labuser@labuser-virtual-machine:~/tesst1$ git log --oneline
+f3d26b8 (HEAD -> master, origin/devopss1, devopss1) changes4
+12cee95 (origin/master) changes2
+afd26c7 changes1
+labuser@labuser-virtual-machine:~/tesst1$ cd
+labuser@labuser-virtual-machine:~$ git clone https://github.com/Hemashreeravi/tests1.git
+Cloning into 'tests1'...
+remote: Enumerating objects: 10, done.
+remote: Counting objects: 100% (10/10), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 10 (delta 1), reused 9 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (10/10), done.
+Resolving deltas: 100% (1/1), done.
+labuser@labuser-virtual-machine:~$ ls -li
+total 60
+6029410 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Desktop
+6029414 drwxr-xr-x 3 labuser labuser 4096 Dec 15  2023 Documents
+6029411 drwxr-xr-x 2 labuser labuser 4096 Dec 18  2023 Downloads
+6036475 -rw-rw-r-- 1 labuser labuser   53 Dec 18  2023 execute.yml
+6029415 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Music
+6029416 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Pictures
+6029413 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Public
+6030259 drwxrwxr-x 2 labuser labuser 4096 Dec 18  2023 repos
+6029322 drwx------ 6 labuser labuser 4096 Dec 15  2023 snap
+6029412 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Templates
+6035749 drwxrwxr-x 3 labuser labuser 4096 Dec 14 05:19 tesst1
+6161981 drwxrwxr-x 4 labuser labuser 4096 Dec 14 04:13 test1
+6031789 -rw-rw-r-- 1 labuser labuser    7 Dec 14 04:45 tests
+6031970 drwxrwxr-x 3 labuser labuser 4096 Dec 14 05:23 tests1
+6029418 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Videos
+labuser@labuser-virtual-machine:~$ cd tests1
+labuser@labuser-virtual-machine:~/tests1$ ls
+tesst1
+labuser@labuser-virtual-machine:~/tests1$ mkdir dev1
+labuser@labuser-virtual-machine:~/tests1$ cd dev1
+labuser@labuser-virtual-machine:~/tests1/dev1$ git pull https://github.com/Hemashreeravi/tests1.git
+From https://github.com/Hemashreeravi/tests1
+ * branch            HEAD       -> FETCH_HEAD
+Already up to date.
+labuser@labuser-virtual-machine:~/tests1/dev1$ branch
+Command 'branch' not found, but can be installed with:
+sudo apt install rheolef
+labuser@labuser-virtual-machine:~/tests1/dev1$ git branch
+* master
+labuser@labuser-virtual-machine:~/tests1/dev1$ ls -li
+total 0
+labuser@labuser-virtual-machine:~/tests1/dev1$ git branch m1
+labuser@labuser-virtual-machine:~/tests1/dev1$ git checkout m1
+Switched to branch 'm1'
+labuser@labuser-virtual-machine:~/tests1/dev1$ echo "apple1" > fruit
+labuser@labuser-virtual-machine:~/tests1/dev1$ ls
+fruit
+labuser@labuser-virtual-machine:~/tests1/dev1$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+labuser@labuser-virtual-machine:~/tests1/dev1$ ls
+fruit
+labuser@labuser-virtual-machine:~/tests1/dev1$ git rebase master
+Current branch master is up to date.
+labuser@labuser-virtual-machine:~/tests1/dev1$ 
+
